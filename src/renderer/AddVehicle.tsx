@@ -15,19 +15,21 @@ const AddVehicle = () => {
 
   const navigate = useNavigate();
   const handleSubmit = () => {
-    const vehicle = new Vehicle({
-      vfNumber,
-      brand,
-      model,
-      seats,
-      registration,
-    });
-    console.log(vehicle);
+    window.electron.store.addVehicle(
+      new Vehicle({
+        vfNumber,
+        brand,
+        model,
+        seats,
+        registration,
+      })
+    );
+    console.log(window.electron.store.getVehicles());
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label htmlFor="vfnumber">
           Numéro VF :
           <input

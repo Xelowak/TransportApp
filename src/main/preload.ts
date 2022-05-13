@@ -59,7 +59,7 @@ contextBridge.exposeInMainWorld('electron', {
         ipcRenderer.send(SET, VEHICLES_KEY, [vehicle]);
       } else {
         vehicles.push(vehicle);
-        ipcRenderer.send(SET, DRIVERS_KEY, vehicles);
+        ipcRenderer.send(SET, VEHICLES_KEY, vehicles);
       }
     },
     getVehicles() {

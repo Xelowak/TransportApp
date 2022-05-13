@@ -7,6 +7,8 @@ import {
 import './App.css';
 import AddDriver from './AddDriver';
 import AddVehicle from './AddVehicle';
+import ViewDrivers from './ViewDrivers';
+import ViewVehicles from './ViewVehicles';
 
 const Hello = () => {
   const navigate = useNavigate();
@@ -16,17 +18,22 @@ const Hello = () => {
       <button type="button" onClick={() => navigate('addDriver')}>
         Ajouter un conducteur
       </button>
+      <button type="button" onClick={() => navigate('viewDrivers')}>
+        Voir conducteurs
+      </button>
       <button type="button" onClick={() => navigate('addVehicle')}>
         Ajouter un véhicule
       </button>
-      <a
-        href="https://github.com/sponsors/electron-react-boilerplate"
-        target="_blank"
-        rel="noreferrer"
+      <button type="button" onClick={() => navigate('viewVehicles')}>
+        Voir véhicules
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          window.electron.store.clear();
+          console.log('Storage cleared');
+        }}
       >
-        <button type="button">Ajouter un trajet</button>
-      </a>
-      <button type="button" onClick={() => window.electron.store.clear()}>
         Clear storage
       </button>
     </div>
@@ -40,6 +47,8 @@ export default function App() {
         <Route path="/" element={<Hello />} />
         <Route path="/addDriver" element={<AddDriver />} />
         <Route path="/addVehicle" element={<AddVehicle />} />
+        <Route path="/viewDrivers" element={<ViewDrivers />} />
+        <Route path="/viewVehicles" element={<ViewVehicles />} />
       </Routes>
     </Router>
   );

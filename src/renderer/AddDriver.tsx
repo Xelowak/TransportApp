@@ -15,23 +15,24 @@ const AddDriver = () => {
 
   const navigate = useNavigate();
   const handleSubmit = () => {
-    const driver = new Driver({
-      name,
-      address,
-      email,
-      isAccredited,
-      hasParkingCard,
-      availability: new Map<Date, DayParts[]>([
-        [new Date(Date.now()), [DayParts.DAY]],
-      ]),
-    });
-    window.electron.store.addDriver(driver);
+    window.electron.store.addDriver(
+      new Driver({
+        name,
+        address,
+        email,
+        isAccredited,
+        hasParkingCard,
+        availability: new Map<Date, DayParts[]>([
+          [new Date(Date.now()), [DayParts.DAY]],
+        ]),
+      })
+    );
     console.log(window.electron.store.getDrivers());
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label htmlFor="name">
           Nom et prénom :
           <input
