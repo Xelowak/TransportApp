@@ -26,6 +26,9 @@ const Hello = () => {
       >
         <button type="button">Ajouter un trajet</button>
       </a>
+      <button type="button" onClick={() => window.electron.store.clear()}>
+        Clear storage
+      </button>
     </div>
   );
 };

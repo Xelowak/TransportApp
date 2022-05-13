@@ -78,7 +78,9 @@ const AddVehicle = () => {
           />
         </label>
         <br />
-        <input type="submit" value="Ajouter" onClick={handleSubmit} />
+        <button type="button" onClick={handleSubmit}>
+          Ajouter
+        </button>
       </form>
       <button type="button" onClick={() => navigate('../')}>
         Annuler
