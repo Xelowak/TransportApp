@@ -10,6 +10,7 @@ const ViewVehicles = () => {
 
   return (
     <div>
+      <h2>Véhicules</h2>
       <table>
         <thead>
           <tr>

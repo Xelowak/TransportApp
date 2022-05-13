@@ -7,6 +7,9 @@ const SET = 'electron-store-set';
 
 const DRIVERS_KEY = 'drivers';
 const VEHICLES_KEY = 'vehicles';
+const ARTISTS_KEY = 'artists';
+const PICKUP_LOCS_KEY = 'pickUpLocations';
+const DROPOFF_LOCS_KEY = 'dropOffLocations';
 
 export type Channels = 'ipc-example';
 
@@ -27,15 +30,12 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
   store: {
-    get(val: any) {
-      return ipcRenderer.sendSync(GET, val);
-    },
-    set(property: any, val: any) {
-      ipcRenderer.send(SET, property, val);
-    },
     clear() {
       ipcRenderer.send(SET, DRIVERS_KEY, []);
       ipcRenderer.send(SET, VEHICLES_KEY, []);
+      ipcRenderer.send(SET, ARTISTS_KEY, []);
+      ipcRenderer.send(SET, PICKUP_LOCS_KEY, []);
+      ipcRenderer.send(SET, DROPOFF_LOCS_KEY, []);
     },
     addDriver(driver: Driver) {
       const drivers = ipcRenderer.sendSync(GET, DRIVERS_KEY) as
@@ -64,6 +64,18 @@ contextBridge.exposeInMainWorld('electron', {
     },
     getVehicles() {
       return ipcRenderer.sendSync(GET, VEHICLES_KEY) as Vehicle[] | undefined;
+    },
+    addString(key: string, value: string) {
+      const data = ipcRenderer.sendSync(GET, key) as string[];
+      if (!data) {
+        ipcRenderer.send(SET, key, [value]);
+      } else {
+        data.push(value);
+        ipcRenderer.send(SET, key, data);
+      }
+    },
+    getStrings(key: string) {
+      return ipcRenderer.sendSync(GET, key) as string[] | undefined;
     },
   },
 });

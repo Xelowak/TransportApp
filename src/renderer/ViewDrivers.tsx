@@ -10,6 +10,7 @@ const ViewDrivers = () => {
 
   return (
     <div>
+      <h2>Conducteurs</h2>
       <table>
         <thead>
           <tr>

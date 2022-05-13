@@ -29,6 +29,7 @@ const AddVehicle = () => {
 
   return (
     <div>
+      <h2>Ajouter un véhicule</h2>
       <form>
         <label htmlFor="vfnumber">
           Numéro VF :

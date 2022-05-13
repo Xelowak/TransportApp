@@ -21,6 +21,8 @@ declare global {
         getDrivers: () => Driver[];
         addVehicle: (vehicle: Vehicle) => void;
         getVehicles: () => Vehicle[];
+        addString: (key: string, value: string) => void;
+        getStrings: (key: string) => string[];
       };
     };
   }

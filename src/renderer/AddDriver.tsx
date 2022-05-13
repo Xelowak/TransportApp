@@ -32,6 +32,7 @@ const AddDriver = () => {
 
   return (
     <div>
+      <h2>Ajouter un conducteur</h2>
       <form>
         <label htmlFor="name">
           Nom et prénom :
